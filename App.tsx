@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Sidebar } from './components/Sidebar';
-import { Dashboard } from './components/Dashboard';
-import { ConsultationView } from './components/ConsultationView';
-import { NotesView } from './components/NotesView';
-import { TemplatesView } from './components/TemplatesView';
-import { SupportView } from './components/SupportView';
-import { CustomNoteView } from './components/CustomNoteView';
-import { PatientDetailsModal } from './components/PatientDetailsModal';
-import { PatientDetails } from './types';
-import { TourOverlay, TourStep } from './components/TourOverlay';
+import { Sidebar } from './components/Sidebar.tsx';
+import { Dashboard } from './components/Dashboard.tsx';
+import { ConsultationView } from './components/ConsultationView.tsx';
+import { NotesView } from './components/NotesView.tsx';
+import { TemplatesView } from './components/TemplatesView.tsx';
+import { SupportView } from './components/SupportView.tsx';
+import { CustomNoteView } from './components/CustomNoteView.tsx';
+import { PatientDetailsModal } from './components/PatientDetailsModal.tsx';
+import { PatientDetails } from './types.ts';
+import { TourOverlay, TourStep } from './components/TourOverlay.tsx';
 
 type ViewType = 'dashboard' | 'consultation' | 'notes' | 'templates' | 'support' | 'custom-note';
 

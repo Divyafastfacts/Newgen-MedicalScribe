@@ -1,5 +1,5 @@
 import React from 'react';
-import { SoapNote } from '../types';
+import { SoapNote } from '../types.ts';
 
 interface SoapPanelProps {
   soapData: SoapNote;

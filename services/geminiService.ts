@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
-import { BBH_SYSTEM_PROMPT } from "../constants";
-import { GeneratedSoapResponse } from "../types";
+import { BBH_SYSTEM_PROMPT } from "../constants.ts";
+import { GeneratedSoapResponse } from "../types.ts";
 
 // Define the schema for the output
 const soapSchema: Schema = {

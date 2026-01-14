@@ -1,4 +1,4 @@
-import { Language, LanguageOption, SoapNote } from './types';
+import { Language, LanguageOption, SoapNote } from './types.ts';
 
 export const LANGUAGES: LanguageOption[] = [
   { code: Language.ENGLISH, label: 'English' },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SoapNote } from '../types';
+import { SoapNote } from '../types.ts';
 
 export const CustomNoteView: React.FC = () => {
   // Patient Details State

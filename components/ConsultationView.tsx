@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Header } from './Header';
-import { TranscriptPanel } from './TranscriptPanel';
-import { SoapPanel } from './SoapPanel';
-import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
-import { useTimer } from '../hooks/useTimer';
-import { generateSoapNote } from '../services/geminiService';
-import { INITIAL_SOAP_NOTE, LANGUAGES } from '../constants';
-import { Language, SoapNote, PatientDetails } from '../types';
+import { Header } from './Header.tsx';
+import { TranscriptPanel } from './TranscriptPanel.tsx';
+import { SoapPanel } from './SoapPanel.tsx';
+import { useSpeechRecognition } from '../hooks/useSpeechRecognition.ts';
+import { useTimer } from '../hooks/useTimer.ts';
+import { generateSoapNote } from '../services/geminiService.ts';
+import { INITIAL_SOAP_NOTE, LANGUAGES } from '../constants.ts';
+import { Language, SoapNote, PatientDetails } from '../types.ts';
 
 interface ConsultationViewProps {
     patientDetails?: PatientDetails;

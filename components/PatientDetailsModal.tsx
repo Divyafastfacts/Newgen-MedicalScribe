@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Language, PatientDetails } from '../types';
-import { LANGUAGES } from '../constants';
+import { Language, PatientDetails } from '../types.ts';
+import { LANGUAGES } from '../constants.ts';
 
 interface PatientDetailsModalProps {
   isOpen: boolean;
