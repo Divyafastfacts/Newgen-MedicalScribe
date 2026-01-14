@@ -23,7 +23,7 @@ const soapSchema: Schema = {
   required: ["hospital", "patient_summary", "soap_details", "raw_transcript_reference"],
 };
 
-export const generateSoapNote = async (transcript: string, selectedLanguage: string): Promise<GeneratedSoapResponse> => {
+export const generateSoapNote = async (transcript: string): Promise<GeneratedSoapResponse> => {
   if (!process.env.API_KEY) {
     throw new Error("API Key is missing. Please check your environment configuration.");
   }
@@ -36,7 +36,7 @@ export const generateSoapNote = async (transcript: string, selectedLanguage: str
       contents: [
         {
           role: "user",
-          parts: [{ text: `Here is the Raw Transcript (Language context: ${selectedLanguage}):\n\n${transcript}` }],
+          parts: [{ text: `Here is the Raw Transcript (Please automatically detect the source language and clinical context):\n\n${transcript}` }],
         },
       ],
       config: {

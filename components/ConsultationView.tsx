@@ -28,7 +28,10 @@ Doctor: Please stick to a bland diet for now—curd rice, khichdi, or toast. Abs
 Patient: Okay doctor. Thank you.`;
 
 export const ConsultationView: React.FC<ConsultationViewProps> = ({ patientDetails, onTourAction }) => {
-  const [language, setLanguage] = useState<Language>(patientDetails?.inputLanguage || Language.ENGLISH);
+  // Use the language selected in patient details for the microphone, or default to English.
+  // We no longer allow changing this mid-session to streamline the UI.
+  const language = patientDetails?.inputLanguage || Language.ENGLISH;
+  
   const [transcript, setTranscript] = useState('');
   const [interimTranscript, setInterimTranscript] = useState('');
   const [soapData, setSoapData] = useState<SoapNote>(INITIAL_SOAP_NOTE);
@@ -87,7 +90,8 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ patientDetai
     setSignature(null); // Reset signature if regenerated
     
     try {
-      const response = await generateSoapNote(fullTranscript, language);
+      // AI automatically detects language from the transcript
+      const response = await generateSoapNote(fullTranscript);
       setSoapData(response.soap_details);
       setPatientSummary(response.patient_summary);
       if (onTourAction) onTourAction('soap_generated');
@@ -123,7 +127,8 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ patientDetai
         signature: signature,
         raw_transcript_reference: transcript + (interimTranscript ? ' ' + interimTranscript : ''),
         metadata: {
-            language_detected: LANGUAGES.find(l => l.code === language)?.label || language,
+            language_context: LANGUAGES.find(l => l.code === language)?.label || language,
+            detection_mode: "AI-Auto-Detect",
             timestamp: new Date().toISOString(),
             patient_context: patientDetails || "Anonymous"
         }
@@ -293,18 +298,9 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ patientDetai
              {/* Toolbar */}
              <div className="flex items-center justify-between">
                  <div className="flex items-center gap-2">
-                     <div className="bg-white p-1 rounded-lg border border-gray-200 shadow-sm flex">
-                        <div className="px-3 py-1.5 text-xs font-bold text-gray-500 uppercase tracking-wide border-r border-gray-100 flex items-center">Input Lang</div>
-                        <select 
-                            value={language}
-                            onChange={(e) => setLanguage(e.target.value as Language)}
-                            className="text-sm bg-transparent border-none text-gray-800 font-semibold focus:ring-0 cursor-pointer py-1 pl-3 pr-8"
-                            disabled={isRecording}
-                        >
-                            {LANGUAGES.map((lang) => (
-                                <option key={lang.code} value={lang.code}>{lang.label}</option>
-                            ))}
-                        </select>
+                     {/* Removed Input Lang Selector as per request */}
+                     <div className="px-3 py-1.5 bg-gray-50 text-xs font-bold text-gray-400 uppercase tracking-wide rounded-lg border border-gray-100">
+                         AI Auto-Detect Enabled
                      </div>
                  </div>
                  
