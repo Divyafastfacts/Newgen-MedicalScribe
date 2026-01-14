@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Scribe 2",
+  "description": "AI-powered medical scribe for Newgen Digitalworks converting multilingual transcripts to SOAP notes.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
