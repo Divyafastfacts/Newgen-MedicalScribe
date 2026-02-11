@@ -189,7 +189,7 @@ export const TemplatesView: React.FC = () => {
                                 Ready to Use!
                             </>
                         ) : (
-                            'Copy Macro'
+                            'Copy Treatment Template'
                         )}
                     </button>
                 </div>
